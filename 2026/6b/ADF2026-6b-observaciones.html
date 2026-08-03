@@ -3,7 +3,7 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0">
-<title>Miradas · ADF Hockey 6°B</title>
+<title>Mirada Entrenador · ADF Hockey · 6°B</title>
 <style>
   * { box-sizing: border-box; margin: 0; padding: 0; }
 
@@ -16,10 +16,11 @@
     --gris-borde: rgba(0,0,0,0.12);
     --radio: 12px;
     --radio-sm: 8px;
+    --sombra: 0 4px 12px rgba(0, 0, 0, 0.05);
   }
 
   body {
-    font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+    font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif;
     background: #f7f7f5;
     color: var(--gris-texto);
     min-height: 100vh;
@@ -36,48 +37,50 @@
     background: #fff;
     display: flex;
     flex-direction: column;
+    box-shadow: var(--sombra);
   }
 
-  /* HEADER */
+  /* HEADER UNIFICADO */
   .header {
-    background: var(--verde);
-    padding: 28px 24px 24px;
+    background: linear-gradient(135deg, var(--verde) 0%, var(--verde-oscuro) 100%);
+    padding: 24px 20px 20px 20px;
     color: #fff;
+    text-align: left;
   }
 
-  .header-marca {
-    font-size: 11px;
-    font-weight: 600;
-    letter-spacing: 0.12em;
-    text-transform: uppercase;
-    opacity: 0.75;
-    margin-bottom: 6px;
+  .logo {
+    display: block;
+    width: 140px;
+    max-width: 80%;
+    height: auto;
+    margin: 0 auto 20px auto;
   }
-
+  
   .header h1 {
-    font-size: 20px;
-    font-weight: 600;
+    font-size: 13px;
+    font-weight: 500;
     line-height: 1.3;
     margin-bottom: 4px;
+    opacity: 0.95;
   }
 
   .header p {
-    font-size: 13px;
-    opacity: 0.8;
-    line-height: 1.4;
+    font-size: 20px;
+    font-weight: 600;
+    line-height: 1.3;
   }
 
-  /* PROGRESS */
+  /* PROGRESS BAR */
   .progress-bar {
-    height: 3px;
-    background: rgba(255,255,255,0.25);
+    height: 4px;
+    background: rgba(0, 0, 0, 0.08);
     position: relative;
   }
 
   .progress-fill {
     height: 100%;
-    background: #fff;
-    transition: width 0.35s ease;
+    background: var(--verde);
+    transition: width 0.35s cubic-bezier(0.4, 0, 0.2, 1);
   }
 
   /* PASOS */
@@ -85,8 +88,8 @@
     display: none;
     flex-direction: column;
     flex: 1;
-    padding: 28px 24px 24px;
-    gap: 20px;
+    padding: 24px 20px;
+    gap: 18px;
   }
 
   .paso.activo {
@@ -95,8 +98,8 @@
 
   .paso-label {
     font-size: 11px;
-    font-weight: 600;
-    letter-spacing: 0.1em;
+    font-weight: 700;
+    letter-spacing: 0.12em;
     text-transform: uppercase;
     color: var(--verde);
   }
@@ -104,15 +107,15 @@
   .paso h2 {
     font-size: 18px;
     font-weight: 600;
-    line-height: 1.35;
+    line-height: 1.3;
     color: var(--gris-texto);
   }
 
   .paso .subtitulo {
-    font-size: 14px;
+    font-size: 13.5px;
     color: #5F5E5A;
-    margin-top: -12px;
-    line-height: 1.5;
+    margin-top: -10px;
+    line-height: 1.4;
   }
 
   /* CAMPOS */
@@ -123,8 +126,8 @@
   }
 
   .campo label {
-    font-size: 13px;
-    font-weight: 500;
+    font-size: 13.5px;
+    font-weight: 600;
     color: #444441;
   }
 
@@ -132,7 +135,7 @@
   .campo select,
   .campo textarea {
     width: 100%;
-    padding: 12px 14px;
+    padding: 13px 16px;
     border: 1px solid var(--gris-borde);
     border-radius: var(--radio-sm);
     font-size: 15px;
@@ -142,7 +145,7 @@
     appearance: none;
     -webkit-appearance: none;
     outline: none;
-    transition: border-color 0.15s;
+    transition: all 0.2s ease;
   }
 
   .campo input:focus,
@@ -155,8 +158,8 @@
   .campo select {
     background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='16' height='16' viewBox='0 0 24 24' fill='none' stroke='%235F5E5A' stroke-width='2'%3E%3Cpolyline points='6 9 12 15 18 9'/%3E%3C/svg%3E");
     background-repeat: no-repeat;
-    background-position: right 12px center;
-    padding-right: 38px;
+    background-position: right 14px center;
+    padding-right: 40px;
   }
 
   .campo textarea {
@@ -175,14 +178,19 @@
   .opcion {
     display: flex;
     align-items: center;
-    gap: 12px;
-    padding: 12px 14px;
+    padding: 14px 16px;
+    background: #ffffff;
     border: 1px solid var(--gris-borde);
     border-radius: var(--radio-sm);
     cursor: pointer;
-    transition: border-color 0.15s, background 0.15s;
+    transition: all 0.2s ease;
     user-select: none;
     -webkit-tap-highlight-color: transparent;
+  }
+
+  .opcion:hover {
+    border-color: #CBD5E1;
+    background: var(--gris-suave);
   }
 
   .opcion:active {
@@ -195,6 +203,7 @@
 
   .opcion-texto {
     font-size: 15px;
+    font-weight: 400;
     line-height: 1.3;
     color: var(--gris-texto);
     flex: 1;
@@ -219,13 +228,12 @@
     color: #888780;
     margin-top: 8px;
     margin-bottom: 2px;
-    padding-left: 2px;
   }
 
   /* BOTÓN PRINCIPAL */
   .btn-siguiente {
     margin-top: auto;
-    padding: 15px 24px;
+    padding: 16px 24px;
     background: var(--verde);
     color: #fff;
     border: none;
@@ -235,12 +243,14 @@
     font-family: inherit;
     cursor: pointer;
     width: 100%;
-    transition: background 0.15s, transform 0.1s;
-    letter-spacing: 0.01em;
+    transition: all 0.2s ease;
+  }
+
+  .btn-siguiente:hover {
+    background: var(--verde-oscuro);
   }
 
   .btn-siguiente:active {
-    background: var(--verde-oscuro);
     transform: scale(0.98);
   }
 
@@ -261,20 +271,20 @@
   }
 
   .exito-icono {
-    width: 72px;
-    height: 72px;
+    width: 80px;
+    height: 80px;
     background: var(--verde-claro);
     border-radius: 50%;
     display: flex;
     align-items: center;
     justify-content: center;
-    font-size: 32px;
+    font-size: 36px;
     margin-bottom: 8px;
   }
 
   .exito-titulo {
-    font-size: 20px;
-    font-weight: 600;
+    font-size: 22px;
+    font-weight: 700;
     color: var(--verde-oscuro);
     line-height: 1.3;
   }
@@ -283,7 +293,7 @@
     font-size: 15px;
     color: #5F5E5A;
     line-height: 1.6;
-    max-width: 300px;
+    max-width: 320px;
   }
 
   .exito-firma {
@@ -305,11 +315,15 @@
     font-family: inherit;
     cursor: pointer;
     width: 100%;
-    transition: background 0.15s;
+    transition: all 0.2s ease;
+  }
+
+  .btn-reiniciar:hover {
+    background: var(--verde-claro);
   }
 
   .btn-reiniciar:active {
-    background: var(--verde-claro);
+    transform: scale(0.98);
   }
 
   /* MARCA FOOTER */
@@ -332,19 +346,19 @@
 <div class="shell">
 
   <div class="header">
-    <div class="header-marca">Miradas · Sistema de seguimiento</div>
-    <h1>ADF Hockey 6°B</h1>
-    <p>Observaciones del último entrenamiento / partido</p>
+    <img src="/Assets/logo-miradas-fondocolor.svg" alt="Miradas 360" class="logo">
+    <h1>Mirada Entrenador · ADF Hockey · 6°B</h1>
+    <p>Observaciones del último entrenamiento o partido</p>
   </div>
 
   <div class="progress-bar">
-    <div class="progress-fill" id="progreso" style="width: 20%"></div>
+    <div class="progress-fill" id="progreso" style="width: 25%"></div>
   </div>
 
   <!-- PASO 1: Datos básicos -->
   <div class="paso activo" id="paso1">
-    <span class="paso-label">Paso 1 de 5 · Identificación</span>
-    <h2>¿Quién registra y sobre qué sesión?</h2>
+    <span class="paso-label">Paso 1 de 4 · Identificación</span>
+    <h2>Completá los datos del registro</h2>
 
     <div class="campo">
       <label for="entrenador">Entrenador/a</label>
@@ -387,27 +401,27 @@
 
   <!-- PASO 2: Logros -->
   <div class="paso" id="paso2">
-    <span class="paso-label">Paso 2 de 5 · Logros</span>
+    <span class="paso-label">Paso 2 de 4 · Logros</span>
     <h2>¿Qué le salió bien?</h2>
-    <p class="subtitulo">Si no hubo nada destacable, pasá de largo.</p>
+    <p class="subtitulo">Si no hubo nada destacable, podés continuar.</p>
 
     <div class="campo">
       <div class="opciones" id="logros">
         <div class="grupo-label">🏑 Técnico</div>
-        <label class="opcion"><input type="checkbox" value="Control y Recepción (Dominio)"><span class="opcion-texto">Control y Recepción <span style="color:#888;font-size:13px">· Dominio</span></span></label>
-        <label class="opcion"><input type="checkbox" value="Distribución (Pases)"><span class="opcion-texto">Distribución <span style="color:#888;font-size:13px">· Pases</span></span></label>
-        <label class="opcion"><input type="checkbox" value="Ataque y Dribbling (Desequilibrio)"><span class="opcion-texto">Ataque y Dribbling <span style="color:#888;font-size:13px">· Desequilibrio</span></span></label>
-        <label class="opcion"><input type="checkbox" value="Quites y Defensa (Recuperación)"><span class="opcion-texto">Quites y Defensa <span style="color:#888;font-size:13px">· Recuperación</span></span></label>
+        <label class="opcion"><input type="checkbox" value="Control y Recepción (Dominio)"><span class="opcion-texto">Control y Recepción <span style="color:#888780;font-size:13px">· Dominio</span></span></label>
+        <label class="opcion"><input type="checkbox" value="Distribución (Pases)"><span class="opcion-texto">Distribución <span style="color:#888780;font-size:13px">· Pases</span></span></label>
+        <label class="opcion"><input type="checkbox" value="Ataque y Dribbling (Desequilibrio)"><span class="opcion-texto">Ataque y Dribbling <span style="color:#888780;font-size:13px">· Desequilibrio</span></span></label>
+        <label class="opcion"><input type="checkbox" value="Quites y Defensa (Recuperación)"><span class="opcion-texto">Quites y Defensa <span style="color:#888780;font-size:13px">· Recuperación</span></span></label>
 
         <div class="grupo-label" style="margin-top:12px">🏃 Físico</div>
-        <label class="opcion"><input type="checkbox" value="Velocidad y Agilidad (Desplazamiento)"><span class="opcion-texto">Velocidad y Agilidad <span style="color:#888;font-size:13px">· Desplazamiento</span></span></label>
-        <label class="opcion"><input type="checkbox" value="Potencia y Estabilidad (Fuerza/Equilibrio)"><span class="opcion-texto">Potencia y Estabilidad <span style="color:#888;font-size:13px">· Fuerza / Equilibrio</span></span></label>
-        <label class="opcion"><input type="checkbox" value="Resistencia (Capacidad aeróbica)"><span class="opcion-texto">Resistencia <span style="color:#888;font-size:13px">· Capacidad aeróbica</span></span></label>
+        <label class="opcion"><input type="checkbox" value="Velocidad y Agilidad (Desplazamiento)"><span class="opcion-texto">Velocidad y Agilidad <span style="color:#888780;font-size:13px">· Desplazamiento</span></span></label>
+        <label class="opcion"><input type="checkbox" value="Potencia y Estabilidad (Fuerza/Equilibrio)"><span class="opcion-texto">Potencia y Estabilidad <span style="color:#888780;font-size:13px">· Fuerza / Equilibrio</span></span></label>
+        <label class="opcion"><input type="checkbox" value="Resistencia (Capacidad aeróbica)"><span class="opcion-texto">Resistencia <span style="color:#888780;font-size:13px">· Capacidad aeróbica</span></span></label>
 
         <div class="grupo-label" style="margin-top:12px">🧠 Actitudinal</div>
-        <label class="opcion"><input type="checkbox" value="Liderazgo y Comunicación (Influencia)"><span class="opcion-texto">Liderazgo y Comunicación <span style="color:#888;font-size:13px">· Influencia</span></span></label>
-        <label class="opcion"><input type="checkbox" value="Resiliencia y Mejora (Aprendizaje)"><span class="opcion-texto">Resiliencia y Mejora <span style="color:#888;font-size:13px">· Aprendizaje</span></span></label>
-        <label class="opcion"><input type="checkbox" value="Compromiso y Disciplina (Valores)"><span class="opcion-texto">Compromiso y Disciplina <span style="color:#888;font-size:13px">· Valores</span></span></label>
+        <label class="opcion"><input type="checkbox" value="Liderazgo y Comunicación (Influencia)"><span class="opcion-texto">Liderazgo y Comunicación <span style="color:#888780;font-size:13px">· Influencia</span></span></label>
+        <label class="opcion"><input type="checkbox" value="Resiliencia y Mejora (Aprendizaje)"><span class="opcion-texto">Resiliencia y Mejora <span style="color:#888780;font-size:13px">· Aprendizaje</span></span></label>
+        <label class="opcion"><input type="checkbox" value="Compromiso y Disciplina (Valores)"><span class="opcion-texto">Compromiso y Disciplina <span style="color:#888780;font-size:13px">· Valores</span></span></label>
       </div>
     </div>
 
@@ -416,27 +430,27 @@
 
   <!-- PASO 3: Desafíos -->
   <div class="paso" id="paso3">
-    <span class="paso-label">Paso 3 de 5 · Desafíos</span>
+    <span class="paso-label">Paso 3 de 4 · Desafíos</span>
     <h2>¿Qué le costó?</h2>
     <p class="subtitulo">Solo si observaste algo concreto.</p>
 
     <div class="campo">
       <div class="opciones" id="desafios">
         <div class="grupo-label">🏑 Técnico</div>
-        <label class="opcion"><input type="checkbox" value="Control y Recepción (Dominio)"><span class="opcion-texto">Control y Recepción <span style="color:#888;font-size:13px">· Dominio</span></span></label>
-        <label class="opcion"><input type="checkbox" value="Distribución (Pases)"><span class="opcion-texto">Distribución <span style="color:#888;font-size:13px">· Pases</span></span></label>
-        <label class="opcion"><input type="checkbox" value="Ataque y Dribbling (Desequilibrio)"><span class="opcion-texto">Ataque y Dribbling <span style="color:#888;font-size:13px">· Desequilibrio</span></span></label>
-        <label class="opcion"><input type="checkbox" value="Quites y Defensa (Recuperación)"><span class="opcion-texto">Quites y Defensa <span style="color:#888;font-size:13px">· Recuperación</span></span></label>
+        <label class="opcion"><input type="checkbox" value="Control y Recepción (Dominio)"><span class="opcion-texto">Control y Recepción <span style="color:#888780;font-size:13px">· Dominio</span></span></label>
+        <label class="opcion"><input type="checkbox" value="Distribución (Pases)"><span class="opcion-texto">Distribución <span style="color:#888780;font-size:13px">· Pases</span></span></label>
+        <label class="opcion"><input type="checkbox" value="Ataque y Dribbling (Desequilibrio)"><span class="opcion-texto">Ataque y Dribbling <span style="color:#888780;font-size:13px">· Desequilibrio</span></span></label>
+        <label class="opcion"><input type="checkbox" value="Quites y Defensa (Recuperación)"><span class="opcion-texto">Quites y Defensa <span style="color:#888780;font-size:13px">· Recuperación</span></span></label>
 
         <div class="grupo-label" style="margin-top:12px">🏃 Físico</div>
-        <label class="opcion"><input type="checkbox" value="Velocidad y Agilidad (Desplazamiento)"><span class="opcion-texto">Velocidad y Agilidad <span style="color:#888;font-size:13px">· Desplazamiento</span></span></label>
-        <label class="opcion"><input type="checkbox" value="Potencia y Estabilidad (Fuerza/Equilibrio)"><span class="opcion-texto">Potencia y Estabilidad <span style="color:#888;font-size:13px">· Fuerza / Equilibrio</span></span></label>
-        <label class="opcion"><input type="checkbox" value="Resistencia (Capacidad aeróbica)"><span class="opcion-texto">Resistencia <span style="color:#888;font-size:13px">· Capacidad aeróbica</span></span></label>
+        <label class="opcion"><input type="checkbox" value="Velocidad y Agilidad (Desplazamiento)"><span class="opcion-texto">Velocidad y Agilidad <span style="color:#888780;font-size:13px">· Desplazamiento</span></span></label>
+        <label class="opcion"><input type="checkbox" value="Potencia y Estabilidad (Fuerza/Equilibrio)"><span class="opcion-texto">Potencia y Estabilidad <span style="color:#888780;font-size:13px">· Fuerza / Equilibrio</span></span></label>
+        <label class="opcion"><input type="checkbox" value="Resistencia (Capacidad aeróbica)"><span class="opcion-texto">Resistencia <span style="color:#888780;font-size:13px">· Capacidad aeróbica</span></span></label>
 
         <div class="grupo-label" style="margin-top:12px">🧠 Actitudinal</div>
-        <label class="opcion"><input type="checkbox" value="Liderazgo y Comunicación (Influencia)"><span class="opcion-texto">Liderazgo y Comunicación <span style="color:#888;font-size:13px">· Influencia</span></span></label>
-        <label class="opcion"><input type="checkbox" value="Resiliencia y Mejora (Aprendizaje)"><span class="opcion-texto">Resiliencia y Mejora <span style="color:#888;font-size:13px">· Aprendizaje</span></span></label>
-        <label class="opcion"><input type="checkbox" value="Compromiso y Disciplina (Valores)"><span class="opcion-texto">Compromiso y Disciplina <span style="color:#888;font-size:13px">· Valores</span></span></label>
+        <label class="opcion"><input type="checkbox" value="Liderazgo y Comunicación (Influencia)"><span class="opcion-texto">Liderazgo y Comunicación <span style="color:#888780;font-size:13px">· Influencia</span></span></label>
+        <label class="opcion"><input type="checkbox" value="Resiliencia y Mejora (Aprendizaje)"><span class="opcion-texto">Resiliencia y Mejora <span style="color:#888780;font-size:13px">· Aprendizaje</span></span></label>
+        <label class="opcion"><input type="checkbox" value="Compromiso y Disciplina (Valores)"><span class="opcion-texto">Compromiso y Disciplina <span style="color:#888780;font-size:13px">· Valores</span></span></label>
       </div>
     </div>
 
@@ -445,7 +459,7 @@
 
   <!-- PASO 4: Comentario -->
   <div class="paso" id="paso4">
-    <span class="paso-label">Paso 4 de 5 · Comentario</span>
+    <span class="paso-label">Paso 4 de 4 · Comentario</span>
     <h2>Algo más que quieras agregar</h2>
     <p class="subtitulo">Opcional. Cualquier observación específica sobre la sesión o la jugadora.</p>
 
@@ -465,12 +479,12 @@
     <button class="btn-reiniciar" onclick="reiniciar()">+ Cargar otra jugadora</button>
   </div>
 
-  <div class="marca-footer"><strong>Miradas</strong> · Sistema de seguimiento formativo</div>
+  <div class="marca-footer"><strong>Miradas 360</strong> · Sistema de seguimiento formativo</div>
 </div>
 
 <script>
   const pasos = [null, 'paso1','paso2','paso3','paso4'];
-  const progresoPct = [null, 20, 40, 60, 80, 100];
+  const progresoPct = [null, 25, 50, 75, 100];
   let pasoActual = 1;
 
   // Fecha por defecto: hoy
@@ -493,6 +507,13 @@
   function irA(n) {
     if (n === 2) {
       const jugadora = document.getElementById('jugadora').value;
+      const entrenador = document.getElementById('entrenador').value.trim();
+      if (!entrenador) {
+        document.getElementById('entrenador').focus();
+        document.getElementById('entrenador').style.borderColor = '#E24B4A';
+        setTimeout(() => document.getElementById('entrenador').style.borderColor = '', 1500);
+        return;
+      }
       if (!jugadora) {
         document.getElementById('jugadora').focus();
         document.getElementById('jugadora').style.borderColor = '#E24B4A';
@@ -512,8 +533,6 @@
       .map(cb => cb.value);
   }
 
-  // ↓ ÚNICO LUGAR QUE TENÉS QUE EDITAR
-  // Pegá acá la URL que te da Apps Script al publicar
   const URL_SCRIPT = 'https://script.google.com/macros/s/AKfycby2K1daHli4NhJl_4hGN750RwlIz8o_mObl8eDDZK00w4Pzj7aHCYY9ckQ-Na8eNtP5/exec';
 
   function enviar() {
@@ -524,16 +543,14 @@
     const desafios = getChecked('desafios');
     const comentario = document.getElementById('comentario').value;
 
-    // Envío a Google Sheets
     fetch(URL_SCRIPT, {
       method: 'POST',
       body: JSON.stringify({ entrenador, fecha, jugadora, logros, desafios, comentario })
-    }).catch(() => {}); // silencia error de red sin bloquear el formulario
+    }).catch(() => {});
 
-    // Mostrar éxito
     document.getElementById('paso4').classList.remove('activo');
     document.getElementById('progreso').style.width = '100%';
-    document.getElementById('exito-titulo').textContent = `¡Observación de ${jugadora.split(',')[0]} registrada! 🏑`;
+    document.getElementById('exito-titulo').textContent = `¡Observación de ${jugadora.split(',')[0]} registrada!`;
     document.getElementById('exito').classList.add('activo');
     window.scrollTo(0, 0);
   }
@@ -548,7 +565,7 @@
     });
     pasoActual = 1;
     document.getElementById('paso1').classList.add('activo');
-    document.getElementById('progreso').style.width = '20%';
+    document.getElementById('progreso').style.width = '25%';
     window.scrollTo(0, 0);
   }
 </script>
