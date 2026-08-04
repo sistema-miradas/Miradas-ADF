@@ -1,446 +1,441 @@
 <!DOCTYPE html>
 <html lang="es">
 <head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0">
-<title>Miradas · Asistencia 6°B</title>
-<style>
-  * { box-sizing: border-box; margin: 0; padding: 0; }
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0">
+  <title>Asistencia - 6° B | ADF</title>
+  <style>
+    * { box-sizing: border-box; margin: 0; padding: 0; }
 
-  :root {
-    --verde: #1D9E75;
-    --verde-claro: #E1F5EE;
-    --verde-oscuro: #0F6E56;
-    --gris-texto: #2C2C2A;
-    --gris-suave: #F1EFE8;
-    --gris-borde: rgba(0,0,0,0.12);
-    --radio: 12px;
-    --radio-sm: 8px;
-  }
+    :root {
+      --verde: #1D9E75;
+      --verde-claro: #E1F5EE;
+      --verde-oscuro: #0F6E56;
+      --gris-texto: #2C2C2A;
+      --gris-suave: #F1EFE8;
+      --gris-borde: rgba(0,0,0,0.12);
+      --radio: 12px;
+      --radio-sm: 8px;
+    }
 
-  body {
-    font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
-    background: #f7f7f5;
-    color: var(--gris-texto);
-    min-height: 100vh;
-    display: flex;
-    justify-content: center;
-    align-items: flex-start;
-    padding: 0;
-  }
+    body {
+      font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+      background: #f7f7f5;
+      color: var(--gris-texto);
+      min-height: 100vh;
+      display: flex;
+      justify-content: center;
+      align-items: flex-start;
+      padding: 0;
+    }
 
-  .shell {
-    width: 100%;
-    max-width: 480px;
-    min-height: 100vh;
-    background: #fff;
-    display: flex;
-    flex-direction: column;
-  }
+    .shell {
+      width: 100%;
+      max-width: 480px;
+      min-height: 100vh;
+      background: #fff;
+      display: flex;
+      flex-direction: column;
+    }
 
-  /* HEADER */
-  .header {
-    background: var(--verde);
-    padding: 28px 24px 24px;
-    color: #fff;
-  }
+    /* HEADER CON LOGO OFICIAL */
+    .header {
+      background: var(--verde);
+      padding: 24px 24px 20px;
+      color: #fff;
+      display: flex;
+      flex-direction: column;
+      align-items: flex-start;
+      gap: 12px;
+    }
 
-  .header-marca {
-    font-size: 11px;
-    font-weight: 600;
-    letter-spacing: 0.12em;
-    text-transform: uppercase;
-    opacity: 0.75;
-    margin-bottom: 6px;
-  }
+    .logo-header {
+      height: 38px;
+      width: auto;
+      display: block;
+    }
 
-  .header h1 {
-    font-size: 20px;
-    font-weight: 600;
-    line-height: 1.3;
-    margin-bottom: 4px;
-  }
+    .header-info h1 {
+      font-size: 20px;
+      font-weight: 600;
+      line-height: 1.3;
+      margin-bottom: 2px;
+    }
 
-  .header p {
-    font-size: 13px;
-    opacity: 0.8;
-    line-height: 1.4;
-  }
+    .header-info p {
+      font-size: 13px;
+      opacity: 0.85;
+      line-height: 1.4;
+    }
 
-  /* PROGRESS */
-  .progress-bar {
-    height: 3px;
-    background: rgba(255,255,255,0.25);
-    position: relative;
-  }
+    /* PROGRESS */
+    .progress-bar {
+      height: 4px;
+      background: rgba(255,255,255,0.25);
+      position: relative;
+    }
 
-  .progress-fill {
-    height: 100%;
-    background: #fff;
-    transition: width 0.35s ease;
-  }
+    .progress-fill {
+      height: 100%;
+      background: #fff;
+      transition: width 0.35s ease;
+    }
 
-  /* PASOS */
-  .paso {
-    display: none;
-    flex-direction: column;
-    flex: 1;
-    padding: 28px 24px 24px;
-    gap: 20px;
-  }
+    /* PASOS */
+    .paso {
+      display: none;
+      flex-direction: column;
+      flex: 1;
+      padding: 28px 24px 24px;
+      gap: 20px;
+    }
 
-  .paso.activo {
-    display: flex;
-  }
+    .paso.activo {
+      display: flex;
+    }
 
-  .paso-label {
-    font-size: 11px;
-    font-weight: 600;
-    letter-spacing: 0.1em;
-    text-transform: uppercase;
-    color: var(--verde);
-  }
+    .paso-label {
+      font-size: 11px;
+      font-weight: 600;
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+      color: var(--verde);
+    }
 
-  .paso h2 {
-    font-size: 18px;
-    font-weight: 600;
-    line-height: 1.35;
-    color: var(--gris-texto);
-  }
+    .paso h2 {
+      font-size: 18px;
+      font-weight: 600;
+      line-height: 1.35;
+      color: var(--gris-texto);
+    }
 
-  .paso .subtitulo {
-    font-size: 14px;
-    color: #5F5E5A;
-    margin-top: -12px;
-    line-height: 1.5;
-  }
+    .paso .subtitulo {
+      font-size: 14px;
+      color: #5F5E5A;
+      margin-top: -12px;
+      line-height: 1.5;
+    }
 
-  /* CAMPOS */
-  .campo {
-    display: flex;
-    flex-direction: column;
-    gap: 8px;
-  }
+    /* CAMPOS */
+    .campo {
+      display: flex;
+      flex-direction: column;
+      gap: 8px;
+    }
 
-  .campo label {
-    font-size: 13px;
-    font-weight: 500;
-    color: #444441;
-  }
+    .campo label {
+      font-size: 13px;
+      font-weight: 500;
+      color: #444441;
+    }
 
-  .campo input,
-  .campo select,
-  .campo textarea {
-    width: 100%;
-    padding: 12px 14px;
-    border: 1px solid var(--gris-borde);
-    border-radius: var(--radio-sm);
-    font-size: 15px;
-    font-family: inherit;
-    color: var(--gris-texto);
-    background: #fff;
-    appearance: none;
-    -webkit-appearance: none;
-    outline: none;
-    transition: border-color 0.15s;
-  }
+    .campo input,
+    .campo select,
+    .campo textarea {
+      width: 100%;
+      padding: 12px 14px;
+      border: 1px solid var(--gris-borde);
+      border-radius: var(--radio-sm);
+      font-size: 15px;
+      font-family: inherit;
+      color: var(--gris-texto);
+      background: #fff;
+      appearance: none;
+      -webkit-appearance: none;
+      outline: none;
+      transition: border-color 0.15s;
+    }
 
-  .campo input:focus,
-  .campo select:focus,
-  .campo textarea:focus {
-    border-color: var(--verde);
-    box-shadow: 0 0 0 3px rgba(29,158,117,0.12);
-  }
+    .campo input:focus,
+    .campo select:focus,
+    .campo textarea:focus {
+      border-color: var(--verde);
+      box-shadow: 0 0 0 3px rgba(29,158,117,0.12);
+    }
 
-  .campo textarea {
-    resize: none;
-    min-height: 100px;
-    line-height: 1.6;
-  }
+    .campo textarea {
+      resize: none;
+      min-height: 100px;
+      line-height: 1.6;
+    }
 
-  /* TIPO DE SESIÓN */
-  .tipo-opciones {
-    display: grid;
-    grid-template-columns: 1fr 1fr;
-    gap: 10px;
-  }
+    /* TIPO DE SESIÓN */
+    .tipo-opciones {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 10px;
+    }
 
-  .tipo-btn {
-    padding: 14px 10px;
-    border: 1.5px solid var(--gris-borde);
-    border-radius: var(--radio-sm);
-    background: #fff;
-    font-size: 15px;
-    font-family: inherit;
-    color: var(--gris-texto);
-    cursor: pointer;
-    text-align: center;
-    transition: all 0.15s;
-    -webkit-tap-highlight-color: transparent;
-    user-select: none;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    gap: 6px;
-  }
+    .tipo-btn {
+      padding: 14px 10px;
+      border: 1.5px solid var(--gris-borde);
+      border-radius: var(--radio-sm);
+      background: #fff;
+      font-size: 15px;
+      font-family: inherit;
+      color: var(--gris-texto);
+      cursor: pointer;
+      text-align: center;
+      transition: all 0.15s;
+      -webkit-tap-highlight-color: transparent;
+      user-select: none;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: 6px;
+    }
 
-  .tipo-btn .tipo-icono {
-    font-size: 22px;
-  }
+    .tipo-btn .tipo-icono {
+      font-size: 22px;
+    }
 
-  .tipo-btn .tipo-texto {
-    font-size: 14px;
-    font-weight: 500;
-  }
+    .tipo-btn .tipo-texto {
+      font-size: 14px;
+      font-weight: 500;
+    }
 
-  .tipo-btn .tipo-sub {
-    font-size: 11px;
-    color: #888780;
-  }
+    .tipo-btn:active {
+      transform: scale(0.97);
+    }
 
-  .tipo-btn:active {
-    transform: scale(0.97);
-  }
+    .tipo-btn.seleccionado {
+      border-color: var(--verde);
+      background: var(--verde-claro);
+      color: var(--verde-oscuro);
+    }
 
-  .tipo-btn.seleccionado {
-    border-color: var(--verde);
-    background: var(--verde-claro);
-    color: var(--verde-oscuro);
-  }
+    /* LISTA DE AUSENTES */
+    .jugadoras-lista {
+      display: flex;
+      flex-direction: column;
+      gap: 6px;
+    }
 
-  .tipo-btn.seleccionado .tipo-sub {
-    color: var(--verde);
-  }
+    .jugadora-item {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      padding: 11px 14px;
+      border: 1px solid var(--gris-borde);
+      border-radius: var(--radio-sm);
+      cursor: pointer;
+      transition: border-color 0.15s, background 0.15s;
+      user-select: none;
+      -webkit-tap-highlight-color: transparent;
+    }
 
-  /* LISTA DE AUSENTES */
-  .jugadoras-lista {
-    display: flex;
-    flex-direction: column;
-    gap: 6px;
-  }
+    .jugadora-item:active {
+      transform: scale(0.98);
+    }
 
-  .jugadora-item {
-    display: flex;
-    align-items: center;
-    gap: 12px;
-    padding: 11px 14px;
-    border: 1px solid var(--gris-borde);
-    border-radius: var(--radio-sm);
-    cursor: pointer;
-    transition: border-color 0.15s, background 0.15s;
-    user-select: none;
-    -webkit-tap-highlight-color: transparent;
-  }
+    .jugadora-check {
+      width: 20px;
+      height: 20px;
+      border: 1.5px solid var(--gris-borde);
+      border-radius: 5px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      flex-shrink: 0;
+      transition: all 0.15s;
+      background: #fff;
+    }
 
-  .jugadora-item:active {
-    transform: scale(0.98);
-  }
+    .jugadora-nombre {
+      font-size: 15px;
+      color: var(--gris-texto);
+      flex: 1;
+    }
 
-  .jugadora-check {
-    width: 20px;
-    height: 20px;
-    border: 1.5px solid var(--gris-borde);
-    border-radius: 5px;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    flex-shrink: 0;
-    transition: all 0.15s;
-    background: #fff;
-  }
+    .jugadora-item.ausente {
+      border-color: #E05A5A;
+      background: #FEF0F0;
+    }
 
-  .jugadora-nombre {
-    font-size: 15px;
-    color: var(--gris-texto);
-    flex: 1;
-  }
+    .jugadora-item.ausente .jugadora-check {
+      background: #E05A5A;
+      border-color: #E05A5A;
+    }
 
-  .jugadora-item.ausente {
-    border-color: #E05A5A;
-    background: #FEF0F0;
-  }
+    .jugadora-item.ausente .jugadora-nombre {
+      color: #8B2020;
+      font-weight: 500;
+    }
 
-  .jugadora-item.ausente .jugadora-check {
-    background: #E05A5A;
-    border-color: #E05A5A;
-  }
+    .jugadora-check-icon {
+      color: #fff;
+      font-size: 12px;
+      display: none;
+    }
 
-  .jugadora-item.ausente .jugadora-nombre {
-    color: #8B2020;
-    font-weight: 500;
-  }
+    .jugadora-item.ausente .jugadora-check-icon {
+      display: block;
+    }
 
-  .jugadora-check-icon {
-    color: #fff;
-    font-size: 12px;
-    display: none;
-  }
+    /* CONTADOR */
+    .contador-ausentes {
+      display: flex;
+      align-items: center;
+      gap: 8px;
+      padding: 10px 14px;
+      background: var(--gris-suave);
+      border-radius: var(--radio-sm);
+      font-size: 13px;
+      color: #5F5E5A;
+    }
 
-  .jugadora-item.ausente .jugadora-check-icon {
-    display: block;
-  }
+    .contador-ausentes strong {
+      color: #E05A5A;
+    }
 
-  /* CONTADOR */
-  .contador-ausentes {
-    display: flex;
-    align-items: center;
-    gap: 8px;
-    padding: 10px 14px;
-    background: var(--gris-suave);
-    border-radius: var(--radio-sm);
-    font-size: 13px;
-    color: #5F5E5A;
-  }
+    .contador-ausentes.con-ausentes {
+      background: #FEF0F0;
+    }
 
-  .contador-ausentes strong {
-    color: #E05A5A;
-  }
+    /* BOTÓN PRINCIPAL */
+    .btn-siguiente {
+      margin-top: auto;
+      padding: 15px 24px;
+      background: var(--verde);
+      color: #fff;
+      border: none;
+      border-radius: var(--radio);
+      font-size: 16px;
+      font-weight: 600;
+      font-family: inherit;
+      cursor: pointer;
+      width: 100%;
+      transition: background 0.15s, transform 0.1s;
+      letter-spacing: 0.01em;
+    }
 
-  .contador-ausentes.con-ausentes {
-    background: #FEF0F0;
-  }
+    .btn-siguiente:active {
+      background: var(--verde-oscuro);
+      transform: scale(0.98);
+    }
 
-  /* BOTÓN PRINCIPAL */
-  .btn-siguiente {
-    margin-top: auto;
-    padding: 15px 24px;
-    background: var(--verde);
-    color: #fff;
-    border: none;
-    border-radius: var(--radio);
-    font-size: 16px;
-    font-weight: 600;
-    font-family: inherit;
-    cursor: pointer;
-    width: 100%;
-    transition: background 0.15s, transform 0.1s;
-    letter-spacing: 0.01em;
-  }
+    /* PANTALLA ÉXITO */
+    .pantalla-exito {
+      display: none;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      flex: 1;
+      padding: 40px 28px;
+      text-align: center;
+      gap: 16px;
+    }
 
-  .btn-siguiente:active {
-    background: var(--verde-oscuro);
-    transform: scale(0.98);
-  }
+    .pantalla-exito.activo {
+      display: flex;
+    }
 
-  /* PANTALLA FINAL */
-  .pantalla-exito {
-    display: none;
-    flex-direction: column;
-    align-items: center;
-    justify-content: center;
-    flex: 1;
-    padding: 40px 28px;
-    text-align: center;
-    gap: 16px;
-  }
+    .exito-icono {
+      width: 72px;
+      height: 72px;
+      background: var(--verde-claro);
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 32px;
+      margin-bottom: 8px;
+    }
 
-  .pantalla-exito.activo {
-    display: flex;
-  }
+    .exito-titulo {
+      font-size: 20px;
+      font-weight: 600;
+      color: var(--verde-oscuro);
+      line-height: 1.3;
+    }
 
-  .exito-icono {
-    width: 72px;
-    height: 72px;
-    background: var(--verde-claro);
-    border-radius: 50%;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    font-size: 32px;
-    margin-bottom: 8px;
-  }
+    .exito-resumen {
+      width: 100%;
+      background: #FEF0F0;
+      border-radius: var(--radio-sm);
+      padding: 14px 16px;
+      text-align: left;
+      display: none;
+    }
 
-  .exito-titulo {
-    font-size: 20px;
-    font-weight: 600;
-    color: var(--verde-oscuro);
-    line-height: 1.3;
-  }
+    .exito-resumen.visible {
+      display: block;
+    }
 
-  .exito-resumen {
-    width: 100%;
-    background: #FEF0F0;
-    border-radius: var(--radio-sm);
-    padding: 14px 16px;
-    text-align: left;
-    display: none;
-  }
+    .exito-resumen-titulo {
+      font-size: 11px;
+      font-weight: 600;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+      color: #E05A5A;
+      margin-bottom: 8px;
+    }
 
-  .exito-resumen.visible {
-    display: block;
-  }
+    .exito-resumen-lista {
+      font-size: 14px;
+      color: #8B2020;
+      line-height: 1.8;
+    }
 
-  .exito-resumen-titulo {
-    font-size: 11px;
-    font-weight: 600;
-    letter-spacing: 0.08em;
-    text-transform: uppercase;
-    color: #E05A5A;
-    margin-bottom: 8px;
-  }
+    .exito-subtitulo {
+      font-size: 15px;
+      color: #5F5E5A;
+      line-height: 1.6;
+      max-width: 300px;
+    }
 
-  .exito-resumen-lista {
-    font-size: 14px;
-    color: #8B2020;
-    line-height: 1.8;
-  }
+    .exito-firma {
+      font-size: 13px;
+      color: #888780;
+      margin-top: 8px;
+      font-style: italic;
+    }
 
-  .exito-subtitulo {
-    font-size: 15px;
-    color: #5F5E5A;
-    line-height: 1.6;
-    max-width: 300px;
-  }
+    .btn-reiniciar {
+      margin-top: 24px;
+      padding: 15px 24px;
+      background: #fff;
+      color: var(--verde-oscuro);
+      border: 1.5px solid var(--verde);
+      border-radius: var(--radio);
+      font-size: 15px;
+      font-weight: 600;
+      font-family: inherit;
+      cursor: pointer;
+      width: 100%;
+      transition: background 0.15s;
+    }
 
-  .exito-firma {
-    font-size: 13px;
-    color: #888780;
-    margin-top: 8px;
-    font-style: italic;
-  }
+    .btn-reiniciar:active {
+      background: var(--verde-claro);
+    }
 
-  .btn-reiniciar {
-    margin-top: 24px;
-    padding: 15px 24px;
-    background: #fff;
-    color: var(--verde-oscuro);
-    border: 1.5px solid var(--verde);
-    border-radius: var(--radio);
-    font-size: 15px;
-    font-weight: 600;
-    font-family: inherit;
-    cursor: pointer;
-    width: 100%;
-    transition: background 0.15s;
-  }
+    /* MARCA FOOTER */
+    .marca-footer {
+      text-align: center;
+      padding: 12px;
+      font-size: 11px;
+      color: #B4B2A9;
+      letter-spacing: 0.05em;
+      border-top: 1px solid var(--gris-borde);
+    }
 
-  .btn-reiniciar:active {
-    background: var(--verde-claro);
-  }
-
-  /* MARCA FOOTER */
-  .marca-footer {
-    text-align: center;
-    padding: 12px;
-    font-size: 11px;
-    color: #B4B2A9;
-    letter-spacing: 0.05em;
-    border-top: 1px solid var(--gris-borde);
-  }
-
-  .marca-footer strong {
-    color: var(--verde);
-    font-weight: 600;
-  }
-</style>
+    .marca-footer strong {
+      color: var(--verde);
+      font-weight: 600;
+    }
+  </style>
 </head>
 <body>
 <div class="shell">
 
+  <!-- CABECERA DE MARCA Y CATEGORÍA -->
   <div class="header">
-    <div class="header-marca">Miradas · Sistema de seguimiento</div>
-    <h1>ADF Hockey 6°B</h1>
-    <p>Registro de asistencia · Entrenamiento o partido</p>
+    <img src="/assets/logo-miradas-fondocolor.svg" alt="Miradas 360" class="logo-header">
+    <div class="header-info">
+      <h1>Asistencia · Categoría 6° B</h1>
+      <p>ADF Hockey — Registro de entrenamiento o partido</p>
+    </div>
   </div>
 
   <div class="progress-bar">
@@ -465,18 +460,18 @@
     <div class="campo">
       <label>Tipo de sesión <span style="color:#888780;font-weight:400">(opcional)</span></label>
       <div class="tipo-opciones">
-        <button class="tipo-btn" id="btn-entrenamiento" onclick="seleccionarTipo('entrenamiento')">
+        <button type="button" class="tipo-btn" id="btn-entrenamiento" onclick="seleccionarTipo('entrenamiento')">
           <span class="tipo-icono">🏑</span>
           <span class="tipo-texto">Entrenamiento</span>
         </button>
-        <button class="tipo-btn" id="btn-partido" onclick="seleccionarTipo('partido')">
+        <button type="button" class="tipo-btn" id="btn-partido" onclick="seleccionarTipo('partido')">
           <span class="tipo-icono">🏆</span>
           <span class="tipo-texto">Partido</span>
         </button>
       </div>
     </div>
 
-    <button class="btn-siguiente" onclick="irA(2)">¿Quién faltó? →</button>
+    <button type="button" class="btn-siguiente" onclick="irA(2)">¿Quién faltó? →</button>
   </div>
 
   <!-- PASO 2: Ausentes -->
@@ -491,11 +486,11 @@
 
     <div class="campo">
       <div class="jugadoras-lista" id="jugadoras-lista">
-        <!-- generado por JS -->
+        <!-- Generado dinámicamente por JS -->
       </div>
     </div>
 
-    <button class="btn-siguiente" onclick="irA(3)">Agregar comentario →</button>
+    <button type="button" class="btn-siguiente" onclick="irA(3)">Agregar comentario →</button>
   </div>
 
   <!-- PASO 3: Comentario -->
@@ -508,7 +503,7 @@
       <textarea id="comentario" placeholder="Motivos, aclaraciones o cualquier contexto útil…"></textarea>
     </div>
 
-    <button class="btn-siguiente" onclick="enviar()">Registrar asistencia →</button>
+    <button type="button" class="btn-siguiente" onclick="enviar()">Registrar asistencia →</button>
   </div>
 
   <!-- PANTALLA ÉXITO -->
@@ -523,7 +518,7 @@
 
     <p class="exito-subtitulo">Los datos ya están en el sistema del club y serán procesados para el próximo reporte.</p>
     <p class="exito-firma">Tu mirada hace la diferencia.<br>Gracias por estos segundos para el crecimiento de las chicas.</p>
-    <button class="btn-reiniciar" onclick="reiniciar()">+ Cargar nueva sesión</button>
+    <button type="button" class="btn-reiniciar" onclick="reiniciar()">+ Cargar nueva sesión</button>
   </div>
 
   <div class="marca-footer"><strong>Miradas</strong> · Sistema de seguimiento formativo</div>
@@ -549,10 +544,9 @@
     'Severino, Tais',
     'Torres, Guadalupe Maria',
     'Villegas Ali, Josefina',
-    'Vizzo, Bernarda',
+    'Vizzo, Bernarda'
   ];
 
-  // ↓ Pegá acá la URL de tu Apps Script
   const URL_SCRIPT = 'https://script.google.com/macros/s/AKfycby2K1daHli4NhJl_4hGN750RwlIz8o_mObl8eDDZK00w4Pzj7aHCYY9ckQ-Na8eNtP5/exec';
 
   let tipoSesion = '';
@@ -629,6 +623,7 @@
       method: 'POST',
       body: JSON.stringify({
         tipo: 'asistencia',
+        categoria: '6B',
         entrenador,
         fecha,
         tipoSesion,
